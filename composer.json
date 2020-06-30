@@ -1,11 +1,14 @@
 {
-    "name": "liocha/php-project-lvl1",
-    "description": "first php project in hexlet",
-    "authors": [
-        {
-            "name": "Alex",
-            "email": "dev@liocha.ru"
-        }
-    ],
-    "require": {}
+  "name": "liocha/php-project-lvl1",
+  "bin": [
+    "bin/brain-games"
+  ],
+  "description": "first php project in hexlet",
+  "authors": [
+    {
+      "name": "Alex",
+      "email": "dev@liocha.ru"
+    }
+  ],
+  "require": {}
 }
