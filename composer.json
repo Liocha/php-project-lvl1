@@ -1,0 +1,11 @@
+{
+    "name": "liocha/php-project-lvl1",
+    "description": "first php project in hexlet",
+    "authors": [
+        {
+            "name": "Alex",
+            "email": "dev@liocha.ru"
+        }
+    ],
+    "require": {}
+}
