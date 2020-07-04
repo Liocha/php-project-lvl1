@@ -13,4 +13,4 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Run make init!
-      run: make init
+      run: make install; make init;
