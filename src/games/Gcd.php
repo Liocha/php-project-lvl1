@@ -16,7 +16,7 @@ function gcd($a, $b)
 }
 
 function run()
-{   
+{
     $condition = 'Find the greatest common divisor of given numbers.';
     $arrayOfQuestions = [];
     for ($i = 0; $i < 3; $i++) {
