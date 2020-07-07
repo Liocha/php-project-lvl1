@@ -3,7 +3,8 @@
   "bin": [
     "bin/brain-games",
     "bin/brain-even",
-    "bin/brain-calc"
+    "bin/brain-calc",
+    "bin/brain-gcd"
   ],
   "description": "first php project in hexlet",
   "authors": [
@@ -20,7 +21,8 @@
       "src/Cli.php",
       "src/Engine.php",
       "src/games/ParityCheck.php",
-      "src/games/Calculator.php"
+      "src/games/Calculator.php",
+      "src/games/Gcd.php"
     ]
   },
   "require-dev": {
