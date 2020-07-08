@@ -19,3 +19,7 @@
 ## Example game launch progression.
 
 [![asciicast](https://asciinema.org/a/EyRcGIE5zTgjEVa7JUpJ93CHD.svg)](https://asciinema.org/a/EyRcGIE5zTgjEVa7JUpJ93CHD)
+
+## Example game launch prime.
+
+[![asciicast](https://asciinema.org/a/QICAYb5RIFD80xsf2OIvpJ8qT.svg)](https://asciinema.org/a/QICAYb5RIFD80xsf2OIvpJ8qT)
