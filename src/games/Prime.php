@@ -20,7 +20,7 @@ function isPrime($val)
 }
 
 function run()
-{   
+{
     $questionsCount = 3;
     $questions = [];
 
