@@ -12,5 +12,5 @@ jobs:
 
     steps:
     # Runs a single command using the runners shell
-    - name: Run make init!
+    - name: Run make lint!
       run: git clone https://github.com/Liocha/php-project-lvl1.git; cd ./php-project-lvl1; make install; make lint;
