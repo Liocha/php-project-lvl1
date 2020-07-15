@@ -2,7 +2,9 @@
 
 namespace Brain\Games\Calculator;
 
-function calc($first, $second, $sign)
+const CONDITION = 'What is the result of the expression?';
+
+function calculate($first, $second, $sign)
 {
     switch ($sign) {
         case '*':
@@ -14,25 +16,25 @@ function calc($first, $second, $sign)
 
 function run()
 {
-    $condition = 'What is the result of the expression?';
-    $arrayOfQuestions = [];
+    $questionsCount = 3;
+    $questions = [];
     $signs = ['+', '*'];
    
-    for ($i = 0; $i < 3; $i++) {
-        $first = mt_rand(1, 100);
-        $second = mt_rand(1, 100);
-        $rand_keys = array_rand($signs);
-        $sign = $signs[$rand_keys];
+    for ($questionIndex = 0; $questionIndex < $questionsCount; $questionIndex++) {
+        $firstOperand = mt_rand(1, 100);
+        $secondOperand = mt_rand(1, 100);
+        $signNum = array_rand($signs);
+        $sign = $signs[$signNum];
 
-        $answer = calc($first, $second, $sign);
-        $question = "{$first} {$sign} {$second}";
+        $currentAnswer = calculate($firstOperand, $secondOperand, $sign);
+        $currentQuestion = "{$firstOperand} {$sign} {$secondOperand}";
 
-        if (!array_key_exists($question, $arrayOfQuestions)) {
-            $arrayOfQuestions[$question] =  $answer;
+        if (!array_key_exists($currentQuestion, $questions)) {
+            $questions[$currentQuestion] =  $currentAnswer;
         } else {
-            $i -= 1;
+            $questionIndex -= 1;
         }
     }
 
-    \Brain\Games\Engine\run($condition, $arrayOfQuestions);
+    \Brain\Games\Engine\startUp(CONDITION, $questions);
 }

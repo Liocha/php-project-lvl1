@@ -2,11 +2,14 @@
 
 namespace Brain\Games\Progression;
 
-function progression($start, $d)
+const CONDITION = 'What number is missing in the progression?';
+
+function getProgression($first, $d)
 {
     $resault = [];
-    for ($i = 1; $i <= 10; $i++) {
-        $resault[] = $start  + $i * $d;
+    $elCount = 10;
+    for ($i = 1; $i <= $elCount; $i++) {
+        $resault[] = $first  + $i * $d;
     }
 
     return $resault;
@@ -14,23 +17,25 @@ function progression($start, $d)
 
 function run()
 {
-    $condition = 'What number is missing in the progression?';
-    $arrayOfQuestions = [];
-    for ($i = 0; $i < 3; $i++) {
-        $start = mt_rand(1, 10);
-        $d = mt_rand(1, 10);
-        $progression = progression($start, $d);
+    $questionsCount = 3;
+    $questions = [];
+    $hidElMask = "..";
+
+    for ($questionIndex = 0; $questionIndex < $questionsCount; $questionIndex++) {
+        $startNum = mt_rand(1, 10);
+        $progressionDiff = mt_rand(1, 10);
+        $progression = getProgression($startNum, $progressionDiff);
         $numHideEl = array_rand($progression);
-        $answer = $progression[$numHideEl];
-        $progression[$numHideEl] = '..';
+        $currentAnswer = $progression[$numHideEl];
+        $progression[$numHideEl] = $hidElMask;
 
-        $question = implode($progression, ' ');
+        $currentQuestion = implode($progression, ' ');
 
-        if (!array_key_exists($question, $arrayOfQuestions)) {
-            $arrayOfQuestions[$question] =  $answer;
+        if (!array_key_exists($currentQuestion, $questions)) {
+            $questions[$currentQuestion] =  $currentAnswer;
         } else {
-            $i -= 1;
+            $questionIndex -= 1;
         }
     }
-    \Brain\Games\Engine\run($condition, $arrayOfQuestions);
+    \Brain\Games\Engine\startUp(CONDITION, $questions);
 }

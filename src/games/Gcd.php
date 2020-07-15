@@ -2,7 +2,9 @@
 
 namespace Brain\Games\Gcd;
 
-function gcd($a, $b)
+const CONDITION = 'Find the greatest common divisor of given numbers.';
+
+function getGcd($a, $b)
 {
     while ($a != 0 && $b != 0) {
         if ($a > $b) {
@@ -17,20 +19,21 @@ function gcd($a, $b)
 
 function run()
 {
-    $condition = 'Find the greatest common divisor of given numbers.';
-    $arrayOfQuestions = [];
-    for ($i = 0; $i < 3; $i++) {
-        $first = mt_rand(1, 100);
-        $second = mt_rand(1, 100);
+    $questionsCount = 3;
+    $questions = [];
 
-        $answer = gcd($first, $second);
-        $question = "{$first} {$second}";
+    for ($questionIndex = 0; $questionIndex < $questionsCount; $questionIndex++) {
+        $firstOperand = mt_rand(1, 100);
+        $secondOperand = mt_rand(1, 100);
 
-        if (!array_key_exists($question, $arrayOfQuestions)) {
-            $arrayOfQuestions[$question] =  $answer;
+        $currentAnswer = getGcd($firstOperand, $secondOperand);
+        $currentQuestion = "{$firstOperand} {$secondOperand}";
+
+        if (!array_key_exists($currentQuestion, $questions)) {
+            $questions[$currentQuestion] =  $currentAnswer;
         } else {
-            $i -= 1;
+            $questionIndex -= 1;
         }
     }
-    \Brain\Games\Engine\run($condition, $arrayOfQuestions);
+    \Brain\Games\Engine\startUp(CONDITION, $questions);
 }

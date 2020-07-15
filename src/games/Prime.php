@@ -2,6 +2,8 @@
 
 namespace Brain\Games\Prime;
 
+const CONDITION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
 function isPrime($val)
 {
     if ($val <= 1) {
@@ -18,18 +20,19 @@ function isPrime($val)
 }
 
 function run()
-{
-    $condition = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-    $arrayOfQuestions = [];
-    for ($i = 0; $i < 3; $i++) {
-        $val = mt_rand(1, 100);
-        $answer = isPrime($val) ? 'yes' : 'no';
+{   
+    $questionsCount = 3;
+    $questions = [];
 
-        if (!array_key_exists($val, $arrayOfQuestions)) {
-            $arrayOfQuestions[$val] =  $answer;
+    for ($questionIndex = 0; $questionIndex < $questionsCount; $questionIndex++) {
+        $currentQuestion = mt_rand(1, 100);
+        $currentAnswer = isPrime($currentQuestion) ? 'yes' : 'no';
+
+        if (!array_key_exists($currentQuestion, $questions)) {
+            $questions[$currentQuestion] =  $currentAnswer;
         } else {
-            $i -= 1;
+            $questionIndex -= 1;
         }
     }
-    \Brain\Games\Engine\run($condition, $arrayOfQuestions);
+    \Brain\Games\Engine\startUp(CONDITION, $questions);
 }
