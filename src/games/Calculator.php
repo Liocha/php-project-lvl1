@@ -2,6 +2,10 @@
 
 namespace Brain\Games\Calculator;
 
+use function Brain\Engine\main;
+
+use const Brain\Engine\QUESTIONSCOUNT;
+
 const CONDITION = 'What is the result of the expression?';
 
 function calculate($first, $second, $sign)
@@ -16,11 +20,11 @@ function calculate($first, $second, $sign)
 
 function run()
 {
-    $questionsCount = 3;
+    $questionsCount = QUESTIONSCOUNT;
     $questions = [];
     $signs = ['+', '*'];
    
-    for ($questionIndex = 0; $questionIndex < $questionsCount; $questionIndex++) {
+    for ($i = 0; $i < $questionsCount; $i++) {
         $firstOperand = mt_rand(1, 100);
         $secondOperand = mt_rand(1, 100);
         $signNum = array_rand($signs);
@@ -32,9 +36,9 @@ function run()
         if (!array_key_exists($currentQuestion, $questions)) {
             $questions[$currentQuestion] =  $currentAnswer;
         } else {
-            $questionIndex -= 1;
+            $i -= 1;
         }
     }
 
-    \Brain\Games\Engine\startUp(CONDITION, $questions);
+    main(CONDITION, $questions);
 }

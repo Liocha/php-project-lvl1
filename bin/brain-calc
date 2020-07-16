@@ -11,4 +11,3 @@
     use function  Brain\Games\Calculator\run;
 
     run();
-?>

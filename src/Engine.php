@@ -1,11 +1,13 @@
 <?php
 
-namespace Brain\Games\Engine;
+namespace Brain\Engine;
 
 use function cli\line;
 use function cli\prompt;
 
-function startUp($condition, $questions)
+const QUESTIONSCOUNT = 3;
+
+function main($condition, $questions)
 {
     line('Welcome to the Brain Game!');
     line($condition);
@@ -15,13 +17,12 @@ function startUp($condition, $questions)
     foreach ($questions as $q => $a) {
         line("Question: $q");
         $answer = prompt("Your answer");
-        if ($answer === (string) $a) {
-            line("Correct!");
-        } else {
+        if ($answer !== (string) $a) {
             line("'{$answer}' is wrong answer ;(. Correct answer was '{$a}'.");
-            line("Let's try again, {$name}!");
-            return;
+                line("Let's try again, {$name}!");
+                return;
         }
+        line("Correct!");
     }
 
     line("Congratulations, {$name}!");
