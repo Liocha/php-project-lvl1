@@ -6,7 +6,7 @@ use function Brain\Engine\runGame;
 
 use const Brain\Engine\ROUNDS_COUNT;
 
-const CONDITION = 'What number is missing in the progression?';
+const DESCRIPTION = 'What number is missing in the progression?';
 
 function getProgression($first, $d)
 {
@@ -22,7 +22,7 @@ function getProgression($first, $d)
 function run()
 {
     $questions = [];
-    $maskHideEl = "..";
+    $maskHideElement = "..";
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $startNum = mt_rand(1, 10);
@@ -30,11 +30,11 @@ function run()
         $progression = getProgression($startNum, $progressionDiff);
         $numHideEl = array_rand($progression);
         $currentAnswer = $progression[$numHideEl];
-        $progression[$numHideEl] = $maskHideEl;
+        $progression[$numHideEl] = $maskHideElement;
 
         $currentQuestion = implode($progression, ' ');
 
         $questions[$currentQuestion] =  $currentAnswer;
     }
-    runGame(CONDITION, $questions);
+    runGame(DESCRIPTION, $questions);
 }

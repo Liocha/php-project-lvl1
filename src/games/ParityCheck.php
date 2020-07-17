@@ -6,7 +6,7 @@ use function Brain\Engine\runGame;
 
 use const Brain\Engine\ROUNDS_COUNT;
 
-const CONDITION = 'Answer "yes" if the number is even, otherwise answer "no"';
+const DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no"';
 
 function run()
 {
@@ -18,5 +18,5 @@ function run()
         $questions[$currentQuestion] =  $currentAnswer;
     }
     
-    runGame(CONDITION, $questions);
+    runGame(DESCRIPTION, $questions);
 }

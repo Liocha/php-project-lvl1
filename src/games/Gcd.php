@@ -6,7 +6,7 @@ use function Brain\Engine\runGame;
 
 use const Brain\Engine\ROUNDS_COUNT;
 
-const CONDITION = 'Find the greatest common divisor of given numbers.';
+const DESCRIPTION = 'Find the greatest common divisor of given numbers.';
 
 function getGcd($a, $b)
 {
@@ -34,5 +34,5 @@ function run()
 
         $questions[$currentQuestion] =  $currentAnswer;
     }
-    runGame(CONDITION, $questions);
+    runGame(DESCRIPTION, $questions);
 }

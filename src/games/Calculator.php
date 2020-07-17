@@ -6,7 +6,7 @@ use function Brain\Engine\runGame;
 
 use const Brain\Engine\ROUNDS_COUNT;
 
-const CONDITION = 'What is the result of the expression?';
+const DESCRIPTION = 'What is the result of the expression?';
 
 function calculate($first, $second, $sign)
 {
@@ -37,5 +37,5 @@ function run()
         $questions[$currentQuestion] =  $currentAnswer;
     }
 
-    runGame(CONDITION, $questions);
+    runGame(DESCRIPTION, $questions);
 }
