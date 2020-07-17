@@ -2,7 +2,7 @@
 
 namespace Brain\Games\Prime;
 
-use function Brain\Engine\main;
+use function Brain\Engine\runCli;
 
 use const Brain\Engine\QUESTIONSCOUNT;
 
@@ -25,10 +25,9 @@ function isPrime($val)
 
 function run()
 {
-    $questionsCount = QUESTIONSCOUNT;
     $questions = [];
 
-    for ($i = 0; $i < $questionsCount; $i++) {
+    for ($i = 0; $i < QUESTIONSCOUNT; $i++) {
         $currentQuestion = mt_rand(1, 100);
         $currentAnswer = isPrime($currentQuestion) ? 'yes' : 'no';
 
@@ -38,5 +37,5 @@ function run()
             $i -= 1;
         }
     }
-    main(CONDITION, $questions);
+    runCli(CONDITION, $questions);
 }

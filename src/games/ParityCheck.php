@@ -2,7 +2,7 @@
 
 namespace Brain\Games\ParityCheck;
 
-use function Brain\Engine\main;
+use function Brain\Engine\runCli;
 
 use const Brain\Engine\QUESTIONSCOUNT;
 
@@ -10,10 +10,9 @@ const CONDITION = 'Answer "yes" if the number is even, otherwise answer "no"';
 
 function run()
 {
-    $questionsCount = QUESTIONSCOUNT;
     $questions = [];
 
-    for ($i = 0; $i < $questionsCount; $i++) {
+    for ($i = 0; $i < QUESTIONSCOUNT; $i++) {
         $currentQuestion = mt_rand(1, 100);
         $currentAnswer = $currentQuestion % 2 == 0 ? 'yes' : 'no';
         if (!array_key_exists($currentQuestion, $questions)) {
@@ -23,5 +22,5 @@ function run()
         }
     }
     
-    main(CONDITION, $questions);
+    runCli(CONDITION, $questions);
 }

@@ -2,7 +2,7 @@
 
 namespace Brain\Games\Calculator;
 
-use function Brain\Engine\main;
+use function Brain\Engine\runCli;
 
 use const Brain\Engine\QUESTIONSCOUNT;
 
@@ -13,18 +13,19 @@ function calculate($first, $second, $sign)
     switch ($sign) {
         case '*':
             return $first * $second;
-        default:
+        case '+':
             return $first + $second;
+        default:
+            throw new \Exception('Unknown operation symbol ' . $sign);
     }
 }
 
 function run()
 {
-    $questionsCount = QUESTIONSCOUNT;
     $questions = [];
     $signs = ['+', '*'];
-   
-    for ($i = 0; $i < $questionsCount; $i++) {
+
+    for ($i = 0; $i < QUESTIONSCOUNT; $i++) {
         $firstOperand = mt_rand(1, 100);
         $secondOperand = mt_rand(1, 100);
         $signNum = array_rand($signs);
@@ -33,12 +34,8 @@ function run()
         $currentAnswer = calculate($firstOperand, $secondOperand, $sign);
         $currentQuestion = "{$firstOperand} {$sign} {$secondOperand}";
 
-        if (!array_key_exists($currentQuestion, $questions)) {
-            $questions[$currentQuestion] =  $currentAnswer;
-        } else {
-            $i -= 1;
-        }
+        $questions[$currentQuestion] =  $currentAnswer;
     }
 
-    main(CONDITION, $questions);
+    runCli(CONDITION, $questions);
 }

@@ -7,7 +7,7 @@ use function cli\prompt;
 
 const QUESTIONSCOUNT = 3;
 
-function main($condition, $questions)
+function runCli($condition, $questions)
 {
     line('Welcome to the Brain Game!');
     line($condition);
@@ -19,8 +19,8 @@ function main($condition, $questions)
         $answer = prompt("Your answer");
         if ($answer !== (string) $a) {
             line("'{$answer}' is wrong answer ;(. Correct answer was '{$a}'.");
-                line("Let's try again, {$name}!");
-                return;
+            line("Let's try again, {$name}!");
+            return;
         }
         line("Correct!");
     }

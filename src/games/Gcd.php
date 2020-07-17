@@ -2,7 +2,7 @@
 
 namespace Brain\Games\Gcd;
 
-use function Brain\Engine\main;
+use function Brain\Engine\runCli;
 
 use const Brain\Engine\QUESTIONSCOUNT;
 
@@ -23,10 +23,9 @@ function getGcd($a, $b)
 
 function run()
 {
-    $questionsCount = QUESTIONSCOUNT;
     $questions = [];
 
-    for ($i = 0; $i < $questionsCount; $i++) {
+    for ($i = 0; $i < QUESTIONSCOUNT; $i++) {
         $firstOperand = mt_rand(1, 100);
         $secondOperand = mt_rand(1, 100);
 
@@ -39,5 +38,5 @@ function run()
             $i -= 1;
         }
     }
-    main(CONDITION, $questions);
+    runCli(CONDITION, $questions);
 }

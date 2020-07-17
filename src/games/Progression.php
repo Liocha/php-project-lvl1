@@ -2,7 +2,7 @@
 
 namespace Brain\Games\Progression;
 
-use function Brain\Engine\main;
+use function Brain\Engine\runCli;
 
 use const Brain\Engine\QUESTIONSCOUNT;
 
@@ -21,11 +21,10 @@ function getProgression($first, $d)
 
 function run()
 {
-    $questionsCount = QUESTIONSCOUNT;
     $questions = [];
     $hidElMask = "..";
 
-    for ($i = 0; $i < $questionsCount; $i++) {
+    for ($i = 0; $i < QUESTIONSCOUNT; $i++) {
         $startNum = mt_rand(1, 10);
         $progressionDiff = mt_rand(1, 10);
         $progression = getProgression($startNum, $progressionDiff);
@@ -41,5 +40,5 @@ function run()
             $i -= 1;
         }
     }
-    main(CONDITION, $questions);
+    runCli(CONDITION, $questions);
 }
