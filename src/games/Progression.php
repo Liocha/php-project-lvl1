@@ -2,17 +2,17 @@
 
 namespace Brain\Games\Progression;
 
-use function Brain\Engine\runCli;
+use function Brain\Engine\runGame;
 
-use const Brain\Engine\QUESTIONSCOUNT;
+use const Brain\Engine\ROUNDS_COUNT;
 
 const CONDITION = 'What number is missing in the progression?';
 
 function getProgression($first, $d)
 {
     $resault = [];
-    $elCount = 10;
-    for ($i = 1; $i <= $elCount; $i++) {
+    $amountElements = 10;
+    for ($i = 1; $i <= $amountElements; $i++) {
         $resault[] = $first  + $i * $d;
     }
 
@@ -22,23 +22,19 @@ function getProgression($first, $d)
 function run()
 {
     $questions = [];
-    $hidElMask = "..";
+    $maskHideEl = "..";
 
-    for ($i = 0; $i < QUESTIONSCOUNT; $i++) {
+    for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $startNum = mt_rand(1, 10);
         $progressionDiff = mt_rand(1, 10);
         $progression = getProgression($startNum, $progressionDiff);
         $numHideEl = array_rand($progression);
         $currentAnswer = $progression[$numHideEl];
-        $progression[$numHideEl] = $hidElMask;
+        $progression[$numHideEl] = $maskHideEl;
 
         $currentQuestion = implode($progression, ' ');
 
-        if (!array_key_exists($currentQuestion, $questions)) {
-            $questions[$currentQuestion] =  $currentAnswer;
-        } else {
-            $i -= 1;
-        }
+        $questions[$currentQuestion] =  $currentAnswer;
     }
-    runCli(CONDITION, $questions);
+    runGame(CONDITION, $questions);
 }

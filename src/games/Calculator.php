@@ -2,9 +2,9 @@
 
 namespace Brain\Games\Calculator;
 
-use function Brain\Engine\runCli;
+use function Brain\Engine\runGame;
 
-use const Brain\Engine\QUESTIONSCOUNT;
+use const Brain\Engine\ROUNDS_COUNT;
 
 const CONDITION = 'What is the result of the expression?';
 
@@ -25,7 +25,7 @@ function run()
     $questions = [];
     $signs = ['+', '*'];
 
-    for ($i = 0; $i < QUESTIONSCOUNT; $i++) {
+    for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $firstOperand = mt_rand(1, 100);
         $secondOperand = mt_rand(1, 100);
         $signNum = array_rand($signs);
@@ -37,5 +37,5 @@ function run()
         $questions[$currentQuestion] =  $currentAnswer;
     }
 
-    runCli(CONDITION, $questions);
+    runGame(CONDITION, $questions);
 }

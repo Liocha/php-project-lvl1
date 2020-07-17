@@ -5,9 +5,9 @@ namespace Brain\Engine;
 use function cli\line;
 use function cli\prompt;
 
-const QUESTIONSCOUNT = 3;
+const ROUNDS_COUNT = 3;
 
-function runCli($condition, $questions)
+function runGame($condition, $questions)
 {
     line('Welcome to the Brain Game!');
     line($condition);

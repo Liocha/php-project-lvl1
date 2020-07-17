@@ -2,9 +2,9 @@
 
 namespace Brain\Games\Gcd;
 
-use function Brain\Engine\runCli;
+use function Brain\Engine\runGame;
 
-use const Brain\Engine\QUESTIONSCOUNT;
+use const Brain\Engine\ROUNDS_COUNT;
 
 const CONDITION = 'Find the greatest common divisor of given numbers.';
 
@@ -25,18 +25,14 @@ function run()
 {
     $questions = [];
 
-    for ($i = 0; $i < QUESTIONSCOUNT; $i++) {
+    for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $firstOperand = mt_rand(1, 100);
         $secondOperand = mt_rand(1, 100);
 
         $currentAnswer = getGcd($firstOperand, $secondOperand);
         $currentQuestion = "{$firstOperand} {$secondOperand}";
 
-        if (!array_key_exists($currentQuestion, $questions)) {
-            $questions[$currentQuestion] =  $currentAnswer;
-        } else {
-            $i -= 1;
-        }
+        $questions[$currentQuestion] =  $currentAnswer;
     }
-    runCli(CONDITION, $questions);
+    runGame(CONDITION, $questions);
 }
