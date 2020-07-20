@@ -1,8 +1,7 @@
 # php-project-lvl1
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
-![Github-Basic-Action](https://github.com/Liocha/php-project-lvl1/workflows/Github-Basic-Action/badge.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c28f6678827173674d97/maintainability)](https://codeclimate.com/github/Liocha/php-project-lvl1/maintainability)
+[![Github-Basic-Action](https://github.com/Liocha/php-project-lvl1/workflows/Github-Basic-Action/badge.svg)](https://github.com/Liocha/php-project-lvl1/actions)
 
 ## Recording package installation (globally) and calling `brain-even` as a regular program.
 
