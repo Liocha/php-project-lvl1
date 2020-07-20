@@ -23,7 +23,7 @@ function getGcd($a, $b)
 
 function run()
 {
-    $questions = [];
+    $gameData = [];
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $firstOperand = mt_rand(1, 100);
@@ -31,8 +31,8 @@ function run()
 
         $currentAnswer = getGcd($firstOperand, $secondOperand);
         $currentQuestion = "{$firstOperand} {$secondOperand}";
-
-        $questions[$currentQuestion] =  $currentAnswer;
+  
+        $gameData[] = [$currentQuestion, (string) $currentAnswer];
     }
-    runGame(DESCRIPTION, $questions);
+    runGame(DESCRIPTION, $gameData);
 }

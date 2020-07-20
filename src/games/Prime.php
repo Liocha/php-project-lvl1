@@ -25,13 +25,13 @@ function isPrime($val)
 
 function run()
 {
-    $questions = [];
+    $gameData = [];
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $currentQuestion = mt_rand(1, 100);
         $currentAnswer = isPrime($currentQuestion) ? 'yes' : 'no';
 
-        $questions[$currentQuestion] =  $currentAnswer;
+        $gameData[] = [(string) $currentQuestion, $currentAnswer];
     }
-    runGame(DESCRIPTION, $questions);
+    runGame(DESCRIPTION, $gameData);
 }

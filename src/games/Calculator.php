@@ -22,7 +22,7 @@ function calculate($first, $second, $sign)
 
 function run()
 {
-    $questions = [];
+    $gameData = [];
     $signs = ['+', '*'];
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
@@ -34,8 +34,8 @@ function run()
         $currentAnswer = calculate($firstOperand, $secondOperand, $sign);
         $currentQuestion = "{$firstOperand} {$sign} {$secondOperand}";
 
-        $questions[$currentQuestion] =  $currentAnswer;
+        $gameData[] = [$currentQuestion, (string) $currentAnswer];
     }
 
-    runGame(DESCRIPTION, $questions);
+    runGame(DESCRIPTION, $gameData);
 }

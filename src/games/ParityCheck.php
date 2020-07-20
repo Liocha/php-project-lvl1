@@ -8,15 +8,20 @@ use const Brain\Engine\ROUNDS_COUNT;
 
 const DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no"';
 
+function isEven($value)
+{
+    return  $value % 2 == 0 ? true : false;
+}
+
 function run()
 {
-    $questions = [];
+    $gameData = [];
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $currentQuestion = mt_rand(1, 100);
-        $currentAnswer = $currentQuestion % 2 == 0 ? 'yes' : 'no';
-        $questions[$currentQuestion] =  $currentAnswer;
+        $currentAnswer = isEven($currentQuestion) ? 'yes' : 'no';
+        $gameData[] = [(string) $currentQuestion, $currentAnswer];
     }
     
-    runGame(DESCRIPTION, $questions);
+    runGame(DESCRIPTION, $gameData);
 }

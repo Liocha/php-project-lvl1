@@ -8,10 +8,9 @@ use const Brain\Engine\ROUNDS_COUNT;
 
 const DESCRIPTION = 'What number is missing in the progression?';
 
-function getProgression($first, $d)
+function progression($amountElements, $first, $d)
 {
     $resault = [];
-    $amountElements = 10;
     for ($i = 1; $i <= $amountElements; $i++) {
         $resault[] = $first  + $i * $d;
     }
@@ -21,20 +20,21 @@ function getProgression($first, $d)
 
 function run()
 {
-    $questions = [];
+    $gameData = [];
     $maskHideElement = "..";
+    $amountElements = 10;
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $startNum = mt_rand(1, 10);
         $progressionDiff = mt_rand(1, 10);
-        $progression = getProgression($startNum, $progressionDiff);
-        $numHideEl = array_rand($progression);
-        $currentAnswer = $progression[$numHideEl];
-        $progression[$numHideEl] = $maskHideElement;
+        $progression = progression($amountElements, $startNum, $progressionDiff);
+        $numHideElement = array_rand($progression);
+        $currentAnswer = $progression[$numHideElement];
+        $progression[$numHideElement] = $maskHideElement;
 
         $currentQuestion = implode($progression, ' ');
 
-        $questions[$currentQuestion] =  $currentAnswer;
+        $gameData[] = [$currentQuestion, (string) $currentAnswer];
     }
-    runGame(DESCRIPTION, $questions);
+    runGame(DESCRIPTION, $gameData);
 }
