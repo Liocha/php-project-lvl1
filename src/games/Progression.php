@@ -8,14 +8,14 @@ use const Brain\Engine\ROUNDS_COUNT;
 
 const DESCRIPTION = 'What number is missing in the progression?';
 
-function progression($amountElements, $first, $d)
+function makeProgression($amountElements, $first, $step)
 {
-    $resault = [];
+    $progression = [];
     for ($i = 1; $i <= $amountElements; $i++) {
-        $resault[] = $first  + $i * $d;
+        $progression[] = $first  + $i * $step;
     }
 
-    return $resault;
+    return $progression;
 }
 
 function run()
@@ -27,7 +27,7 @@ function run()
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $startNum = mt_rand(1, 10);
         $progressionDiff = mt_rand(1, 10);
-        $progression = progression($amountElements, $startNum, $progressionDiff);
+        $progression = makeProgression($amountElements, $startNum, $progressionDiff);
         $numHideElement = array_rand($progression);
         $currentAnswer = $progression[$numHideElement];
         $progression[$numHideElement] = $maskHideElement;
