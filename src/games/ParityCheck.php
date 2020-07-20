@@ -18,9 +18,10 @@ function run()
     $gameData = [];
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
-        $currentQuestion = mt_rand(1, 100);
-        $currentAnswer = isEven($currentQuestion) ? 'yes' : 'no';
-        $gameData[] = [(string) $currentQuestion, $currentAnswer];
+        $randomNum = mt_rand(1, 100);
+        $currentAnswer = isEven($randomNum) ? 'yes' : 'no';
+        $currentQuestion = (string) $randomNum;
+        $gameData[] = [$currentQuestion, $currentAnswer];
     }
     
     runGame(DESCRIPTION, $gameData);

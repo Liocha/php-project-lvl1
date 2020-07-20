@@ -29,12 +29,12 @@ function run()
         $progressionDiff = mt_rand(1, 10);
         $progression = makeProgression($amountElements, $startNum, $progressionDiff);
         $numHideElement = array_rand($progression);
-        $currentAnswer = $progression[$numHideElement];
+        $currentAnswer = (string) $progression[$numHideElement];
         $progression[$numHideElement] = $maskHideElement;
 
         $currentQuestion = implode($progression, ' ');
 
-        $gameData[] = [$currentQuestion, (string) $currentAnswer];
+        $gameData[] = [$currentQuestion, $currentAnswer];
     }
     runGame(DESCRIPTION, $gameData);
 }

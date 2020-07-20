@@ -29,10 +29,10 @@ function run()
         $firstOperand = mt_rand(1, 100);
         $secondOperand = mt_rand(1, 100);
 
-        $currentAnswer = getGcd($firstOperand, $secondOperand);
+        $currentAnswer = (string) getGcd($firstOperand, $secondOperand);
         $currentQuestion = "{$firstOperand} {$secondOperand}";
   
-        $gameData[] = [$currentQuestion, (string) $currentAnswer];
+        $gameData[] = [$currentQuestion, $currentAnswer];
     }
     runGame(DESCRIPTION, $gameData);
 }
